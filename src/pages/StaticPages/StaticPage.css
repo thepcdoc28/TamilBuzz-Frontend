@@ -1,0 +1,93 @@
+.static-page {
+    width: 90%;
+    max-width: 800px;
+    margin: 80px auto;
+    color: #dddddd;
+    line-height: 1.8;
+}
+
+.static-page h1 {
+    color: white;
+    font-size: 42px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 15px;
+}
+
+.static-page h2 {
+    color: #F5C518;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.static-page p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.static-page ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.static-page li {
+    margin-bottom: 10px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    background: #111;
+    border: 1px solid #333;
+    padding: 15px;
+    border-radius: 8px;
+    color: white;
+    font-family: inherit;
+    font-size: 16px;
+}
+
+.contact-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #F5C518;
+}
+
+.contact-form button {
+    background: #F5C518;
+    color: black;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-form button:hover {
+    background: #ffd84d;
+}
+
+@media (max-width: 768px) {
+    .static-page {
+        margin: 40px auto;
+    }
+    .static-page h1 {
+        font-size: 32px;
+    }
+    .static-page h2 {
+        font-size: 20px;
+    }
+}

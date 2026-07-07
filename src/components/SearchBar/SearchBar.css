@@ -1,0 +1,105 @@
+/* ==========================
+   SEARCH BAR
+========================== */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #1a1a1a;
+    border-radius: 30px;
+    padding: 8px 16px;
+    width: 280px;
+    transition: all 0.3s ease;
+    border: 1px solid #333;
+}
+
+.search-bar:focus-within {
+    background-color: #222;
+    border-color: #F5C518;
+    box-shadow: 0 0 10px rgba(245, 197, 24, 0.2);
+    width: 320px;
+}
+
+.search-icon {
+    color: #888;
+    font-size: 16px;
+    margin-right: 12px;
+    transition: color 0.3s ease;
+}
+
+.search-bar:focus-within .search-icon {
+    color: #F5C518;
+}
+
+.search-bar input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    width: 100%;
+    font-size: 15px;
+    font-family: inherit;
+}
+
+.search-bar input::placeholder {
+    color: #777;
+}
+
+/* ==========================
+   SEARCH PAGE
+========================== */
+.search-page {
+    width: 95%;
+    margin: auto;
+    padding: 40px 0;
+    min-height: calc(100vh - 75px);
+    color: white;
+}
+
+.search-header {
+    margin-bottom: 40px;
+}
+
+.search-header h1 {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.search-header span {
+    color: #F5C518;
+    font-style: italic;
+}
+
+/* ==========================
+   GRID LAYOUT
+========================== */
+.search-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+/* ==========================
+   EMPTY STATE
+========================== */
+.no-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 350px;
+    background: #151515;
+    border: 1px dashed #333;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.no-results h2 {
+    color: #F5C518;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.no-results p {
+    color: #888;
+    font-size: 16px;
+}

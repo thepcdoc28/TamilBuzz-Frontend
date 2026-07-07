@@ -1,0 +1,184 @@
+/* ==========================
+   FOOTER
+========================== */
+
+.footer{
+
+    background:#111;
+
+    border-top:1px solid #252525;
+
+    margin-top:80px;
+
+}
+
+/* ==========================
+   CONTAINER
+========================== */
+
+.footer-container{
+
+    width:90%;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    flex-wrap:wrap;
+
+    gap:50px;
+
+    padding:60px 0;
+
+}
+
+/* ==========================
+   LOGO
+========================== */
+
+.footer-logo{
+
+    max-width:350px;
+
+}
+
+.footer-logo h2{
+
+    font-size:34px;
+
+    color:white;
+
+    margin-bottom:18px;
+
+}
+
+.footer-logo span{
+
+    color:#F5C518;
+
+}
+
+.footer-logo p{
+
+    color:#a5a5a5;
+
+    line-height:1.8;
+
+}
+
+/* ==========================
+   LINKS
+========================== */
+
+.footer-links{
+
+    display:flex;
+
+    gap:80px;
+
+}
+
+.footer-links div{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.footer-links h3{
+
+    color:white;
+
+    margin-bottom:18px;
+
+}
+
+.footer-links a{
+
+    color:#999;
+
+    text-decoration:none;
+
+    margin-bottom:10px;
+
+    transition:.3s;
+
+}
+
+.footer-links a:hover{
+
+    color:#F5C518;
+
+}
+
+/* ==========================
+   SOCIAL
+========================== */
+
+.footer-social{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+
+    font-size:24px;
+
+    color:#999;
+
+    padding-bottom:25px;
+
+}
+
+.footer-social svg{
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.footer-social svg:hover{
+
+    color:#F5C518;
+
+}
+
+/* ==========================
+   COPYRIGHT
+========================== */
+
+.footer-bottom{
+
+    text-align:center;
+
+    color:#777;
+
+    padding:20px;
+
+    border-top:1px solid #222;
+
+}
+
+/* ==========================
+   MOBILE RESPONSIVENESS
+========================== */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    .footer-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+    .footer-logo {
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,179 @@
+/* ==========================
+   NAVBAR
+========================== */
+
+.navbar{
+
+    width:100%;
+
+    height:75px;
+
+    background:#111111;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:999;
+
+    border-bottom:1px solid #232323;
+
+}
+
+/* ==========================
+   CONTAINER
+========================== */
+
+.navbar-container{
+
+    width:95%;
+
+    height:100%;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+/* ==========================
+   LOGO
+========================== */
+
+.logo{
+
+    text-decoration:none;
+
+}
+
+.logo h1{
+
+    color:white;
+
+    font-size:30px;
+
+    font-weight:700;
+
+}
+
+.logo span{
+
+    color:#F5C518;
+
+}
+
+/* ==========================
+   NAV LINKS
+========================== */
+
+.nav-links{
+
+    display:flex;
+
+    gap:35px;
+
+}
+
+.nav-links a{
+
+    text-decoration:none;
+
+    color:#dddddd;
+
+    font-size:16px;
+
+    transition:.3s;
+
+}
+
+.nav-links a:hover{
+
+    color:#F5C518;
+
+}
+
+.nav-links .active{
+
+    color:#F5C518;
+
+}
+
+/* ==========================
+   RIGHT SIDE
+========================== */
+
+.navbar-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+/* ==========================
+   PROFILE
+========================== */
+
+.profile-icon{
+    color: #ddd;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    background: #1a1a1a;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid #333;
+}
+
+.profile-icon:hover{
+    color: #111;
+    background: #F5C518;
+    border-color: #F5C518;
+    transform: translateY(-2px);
+}
+
+/* ==========================
+   MOBILE RESPONSIVENESS
+========================== */
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+    }
+    .navbar {
+        height: auto;
+        padding: 10px 0;
+    }
+    .nav-links {
+        gap: 15px;
+    }
+    .nav-links a {
+        font-size: 14px;
+    }
+    .logo h1 {
+        font-size: 24px;
+    }
+}
+@media (max-width: 480px) {
+    .nav-links {
+        gap: 10px;
+    }
+    .nav-links a {
+        font-size: 12px;
+    }
+    .profile-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,11 @@
+/* ==========================
+   APP ROOT
+========================== */
+
+.app{
+    min-height:100vh;
+    width:100%;
+    background:#0f0f0f;
+    color:#ffffff;
+    overflow-x:hidden;
+}
