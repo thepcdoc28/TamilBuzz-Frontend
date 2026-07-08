@@ -344,6 +344,7 @@
     }
     .cast-grid {
         grid-template-columns: 1fr;
+        justify-items: center;
     }
     .movie-actions {
         flex-direction: column;
