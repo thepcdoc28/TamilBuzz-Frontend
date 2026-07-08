@@ -155,14 +155,16 @@
         padding: 15px 0;
     }
     .nav-links {
-        width: 100%;
-        justify-content: center;
-        gap: 25px;
+        width: 95%;
+        max-width: 360px;
+        justify-content: space-between;
+        gap: 0;
     }
     .navbar-right {
-        width: 100%;
-        justify-content: center;
-        gap: 15px;
+        width: 95%;
+        max-width: 360px;
+        justify-content: space-between;
+        gap: 0;
     }
     .nav-links a {
         font-size: 14px;
@@ -172,12 +174,6 @@
     }
 }
 @media (max-width: 480px) {
-    .nav-links {
-        gap: 20px;
-    }
-    .navbar-right {
-        gap: 10px;
-    }
     .nav-links a {
         font-size: 13px;
     }
