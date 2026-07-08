@@ -155,16 +155,15 @@
         padding: 15px 0;
     }
     .nav-links {
-        width: 95%;
-        max-width: 360px;
+        /* Align exact width of (search-bar 280) + (gap 15) + (profile 40) = 335px */
+        width: 335px;
         justify-content: space-between;
         gap: 0;
     }
     .navbar-right {
-        width: 95%;
-        max-width: 360px;
-        justify-content: space-between;
-        gap: 0;
+        width: 100%;
+        justify-content: center;
+        gap: 15px;
     }
     .nav-links a {
         font-size: 14px;
@@ -174,6 +173,13 @@
     }
 }
 @media (max-width: 480px) {
+    .nav-links {
+        /* Align exact width of (search-bar 280) + (gap 10) + (profile 40) = 330px */
+        width: 330px;
+    }
+    .navbar-right {
+        gap: 10px;
+    }
     .nav-links a {
         font-size: 13px;
     }
