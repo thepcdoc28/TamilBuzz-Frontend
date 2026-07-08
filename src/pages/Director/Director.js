@@ -22,6 +22,7 @@ function Director() {
     // Directory States
     const [directorsList, setDirectorsList] = useState([]);
     const [directoryPage, setDirectoryPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
     
     // Profile States
     const [directorDetails, setDirectorDetails] = useState(null);
@@ -42,6 +43,7 @@ function Director() {
         try {
             const data = await getPopularDirectors(page);
             setDirectorsList(data.results || []);
+            setTotalPages(data.total_pages > 500 ? 500 : data.total_pages || 1);
         } catch (error) {
             console.error("Failed to load directors directory:", error);
         } finally {
@@ -103,8 +105,11 @@ function Director() {
                         >
                             Previous
                         </button>
-                        <span>Page {directoryPage}</span>
-                        <button onClick={() => setDirectoryPage(directoryPage + 1)}>
+                        <span>Page {directoryPage} of {totalPages}</span>
+                        <button 
+                            disabled={directoryPage >= totalPages}
+                            onClick={() => setDirectoryPage(directoryPage + 1)}
+                        >
                             Next
                         </button>
                     </div>

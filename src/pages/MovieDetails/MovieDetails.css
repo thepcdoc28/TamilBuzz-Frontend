@@ -343,8 +343,8 @@
         height: 250px;
     }
     .cast-grid {
-        grid-template-columns: 1fr;
-        justify-items: center;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
     .movie-actions {
         flex-direction: column;

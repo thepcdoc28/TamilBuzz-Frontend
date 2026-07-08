@@ -1,7 +1,7 @@
 import "./MovieDetails.css";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, useLocation, Link } from "react-router-dom";
-import { FaHeart, FaRegHeart, FaBookmark, FaRegBookmark, FaPlay, FaTimes } from "react-icons/fa";
+import { FaHeart, FaRegHeart, FaBookmark, FaRegBookmark, FaPlay, FaTimes, FaShareAlt } from "react-icons/fa";
 
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
@@ -196,6 +196,25 @@ function MovieDetails() {
         }
     };
 
+    const handleShareClick = async () => {
+        if (!movie) return;
+        const shareData = {
+            title: `TamilBuzz - ${movie.title}`,
+            text: `Check out ${movie.title} on TamilBuzz!`,
+            url: window.location.href,
+        };
+        try {
+            if (navigator.share) {
+                await navigator.share(shareData);
+            } else {
+                // Fallback to WhatsApp
+                window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareData.text + " " + shareData.url)}`, '_blank');
+            }
+        } catch (error) {
+            console.error("Error sharing", error);
+        }
+    };
+
     if (loading) {
         return <Loader />;
     }
@@ -268,6 +287,13 @@ function MovieDetails() {
                             >
                                 {inWatchlist ? <FaBookmark /> : <FaRegBookmark />}
                                 {inWatchlist ? 'In Watchlist' : 'Add to Watchlist'}
+                            </button>
+
+                            <button 
+                                className="action-btn"
+                                onClick={handleShareClick}
+                            >
+                                <FaShareAlt /> Share
                             </button>
                         </div>
 

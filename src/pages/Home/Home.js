@@ -13,40 +13,46 @@ import {
     getPopularMovies,
     getUpcomingMovies
 } from "../../services/movieService";
+import { getViewingHistory } from "../../services/historyServices";
+import { isAuthenticated } from "../../services/authServices";
 
 function Home() {
 
     const [loading, setLoading] = useState(true);
-
     const [featuredMovie, setFeaturedMovie] = useState(null);
-
     const [trendingMovies, setTrendingMovies] = useState([]);
-
     const [popularMovies, setPopularMovies] = useState([]);
-
     const [topRatedMovies, setTopRatedMovies] = useState([]);
-
     const [upcomingMovies, setUpcomingMovies] = useState([]);
+    const [historyMovies, setHistoryMovies] = useState([]);
 
     useEffect(() => {
-
         loadHome();
-
     }, []);
 
     const loadHome = async () => {
         try {
-            const [
-                trending,
-                popular,
-                topRated,
-                upcoming
-            ] = await Promise.all([
+            const promises = [
                 getTrendingMovies(),
                 getPopularMovies(),
                 getTopRatedMovies(),
                 getUpcomingMovies()
-            ]);
+            ];
+            
+            if (isAuthenticated()) {
+                promises.push(getViewingHistory().catch(err => {
+                    console.error("Failed to load history:", err);
+                    return [];
+                }));
+            }
+
+            const [
+                trending,
+                popular,
+                topRated,
+                upcoming,
+                history
+            ] = await Promise.all(promises);
 
             // Deduplicate movies across rows to maximize UI variety
             const seenIds = new Set();
@@ -68,6 +74,10 @@ function Home() {
             setPopularMovies(uniquePopular);
             setTopRatedMovies(uniqueTopRated);
             setUpcomingMovies(uniqueUpcoming);
+            
+            if (history) {
+                setHistoryMovies(history);
+            }
 
             if (uniqueTrending.length > 0) {
                 setFeaturedMovie(uniqueTrending[0]);
@@ -80,69 +90,44 @@ function Home() {
     };
 
     if (loading) {
-
         return (
-
             <div className="loading-screen">
-
                 <h1>Loading TamilBuzz...</h1>
-
             </div>
-
         );
-
     }
 
     return (
-
         <div className="home">
-
             <Navbar />
-
             <Hero movie={featuredMovie} />
-
             <main className="home-content">
-
+                {historyMovies.length > 0 && (
+                    <MovieSection
+                        title="🕒 Continue Browsing"
+                        movies={historyMovies}
+                    />
+                )}
                 <MovieSection
-
                     title="🔥 Trending Tamil Movies"
-
                     movies={trendingMovies}
-
                 />
-
                 <MovieSection
-
                     title="🎬 Popular Movies"
-
                     movies={popularMovies}
-
                 />
-
                 <MovieSection
-
                     title="⭐ Top Rated"
-
                     movies={topRatedMovies}
-
                 />
-
                 <MovieSection
-
                     title="🆕 Upcoming Movies"
-
                     movies={upcomingMovies}
-
                 />
-
             </main>
-
             <Footer />
-
         </div>
-
     );
-
 }
 
 export default Home;

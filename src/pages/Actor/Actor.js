@@ -23,6 +23,7 @@ function Actor() {
     // Directory States
     const [actorsList, setActorsList] = useState([]);
     const [directoryPage, setDirectoryPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
     
     // Profile States
     const [actorDetails, setActorDetails] = useState(null);
@@ -43,6 +44,7 @@ function Actor() {
         try {
             const data = await getPopularActors(page);
             setActorsList(data.results || []);
+            setTotalPages(data.total_pages > 500 ? 500 : data.total_pages || 1);
         } catch (error) {
             console.error("Failed to load actors directory:", error);
         } finally {
@@ -102,8 +104,11 @@ function Actor() {
                             >
                                 Previous
                             </button>
-                            <span>Page {directoryPage}</span>
-                            <button onClick={() => setDirectoryPage(directoryPage + 1)}>
+                            <span>Page {directoryPage} of {totalPages}</span>
+                            <button 
+                                disabled={directoryPage >= totalPages}
+                                onClick={() => setDirectoryPage(directoryPage + 1)}
+                            >
                                 Next
                             </button>
                         </div>

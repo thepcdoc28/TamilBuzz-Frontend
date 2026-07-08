@@ -122,14 +122,14 @@
 
 .profile-icon{
     color: #ddd;
-    font-size: 24px;
+    font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
     background: #1a1a1a;
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     border: 1px solid #333;
 }
@@ -148,14 +148,23 @@
     .navbar-container {
         flex-direction: column;
         justify-content: center;
-        gap: 10px;
+        gap: 15px;
     }
     .navbar {
         height: auto;
-        padding: 10px 0;
+        padding: 15px 0;
     }
     .nav-links {
-        gap: 15px;
+        width: 100%;
+        max-width: 345px;
+        justify-content: space-between;
+        gap: 0;
+    }
+    .navbar-right {
+        width: 100%;
+        max-width: 345px;
+        justify-content: space-between;
+        gap: 0;
     }
     .nav-links a {
         font-size: 14px;
@@ -166,14 +175,12 @@
 }
 @media (max-width: 480px) {
     .nav-links {
-        gap: 10px;
+        max-width: 100%;
+    }
+    .navbar-right {
+        max-width: 100%;
     }
     .nav-links a {
-        font-size: 12px;
-    }
-    .profile-icon {
-        width: 35px;
-        height: 35px;
-        font-size: 18px;
+        font-size: 13px;
     }
 }

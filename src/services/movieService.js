@@ -185,3 +185,12 @@ export const getYoutubeTrailer = (videos) => {
 
     return bestMatch || null;
 };
+
+/* ==========================
+   AI MATCHMAKER
+========================== */
+
+export const getAiMatchmaker = async (prompt) => {
+    const { data } = await api.post("/matchmaker", { prompt });
+    return data;
+};

@@ -1,0 +1,212 @@
+/* ==========================
+   AI MATCHMAKER MODAL
+========================== */
+
+.ai-matchmaker-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    padding: 20px;
+}
+
+.ai-matchmaker-content {
+    background: #111111;
+    border: 1px solid #333;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.8), 0 0 40px rgba(245, 197, 24, 0.1);
+}
+
+.ai-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 10;
+}
+
+.ai-close-btn:hover {
+    color: #F5C518;
+}
+
+.ai-header {
+    padding: 30px 40px 20px;
+    border-bottom: 1px solid #222;
+}
+
+.ai-header h2 {
+    color: white;
+    font-size: 28px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ai-header h2 span {
+    color: #F5C518;
+}
+
+.ai-header p {
+    color: #bbb;
+    font-size: 15px;
+}
+
+/* ==========================
+   INPUT FORM
+========================== */
+
+.ai-form {
+    padding: 30px 40px;
+}
+
+.ai-textarea-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.ai-textarea {
+    width: 100%;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 20px;
+    color: white;
+    font-size: 16px;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 120px;
+    transition: all 0.3s ease;
+}
+
+.ai-textarea:focus {
+    outline: none;
+    border-color: #F5C518;
+    box-shadow: 0 0 15px rgba(245, 197, 24, 0.15);
+    background: #222;
+}
+
+.ai-textarea::placeholder {
+    color: #666;
+}
+
+.ai-submit-btn {
+    background: linear-gradient(135deg, #F5C518, #f0a500);
+    color: black;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ai-submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(245, 197, 24, 0.3);
+}
+
+.ai-submit-btn:disabled {
+    background: #444;
+    color: #888;
+    cursor: wait;
+}
+
+/* ==========================
+   RESULTS
+========================== */
+
+.ai-results {
+    padding: 0 40px 40px;
+}
+
+.ai-results h3 {
+    color: #F5C518;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.ai-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+}
+
+.ai-error {
+    background: rgba(255, 50, 50, 0.1);
+    border: 1px solid rgba(255, 50, 50, 0.3);
+    color: #ff6b6b;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* ==========================
+   FLOATING BUTTON
+========================== */
+
+.ai-floating-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #F5C518, #f0a500);
+    border: none;
+    color: black;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(245, 197, 24, 0.4);
+    transition: all 0.3s ease;
+    z-index: 9000;
+}
+
+.ai-floating-btn:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 15px 35px rgba(245, 197, 24, 0.6);
+}
+
+/* ==========================
+   MOBILE
+========================== */
+@media (max-width: 768px) {
+    .ai-header, .ai-form, .ai-results {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .ai-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .ai-floating-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}

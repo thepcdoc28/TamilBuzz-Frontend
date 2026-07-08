@@ -16,6 +16,7 @@ function Movies() {
     const [selectedGenre, setSelectedGenre] = useState("");
     const [selectedYear, setSelectedYear] = useState("");
     const [selectedRating, setSelectedRating] = useState("");
+    const [selectedProvider, setSelectedProvider] = useState("");
     const [mediaType, setMediaType] = useState("all");
 
     // Static TMDb Movie Genre Mapping for clean matching
@@ -34,6 +35,15 @@ function Movies() {
         { id: 10751, name: "Family" }
     ];
 
+    const providersList = [
+        { id: 8, name: "Netflix" },
+        { id: 119, name: "Amazon Prime" },
+        { id: 122, name: "Hotstar" },
+        { id: 220, name: "ZEE5" },
+        { id: 237, name: "SonyLIV" },
+        { id: 319, name: "JioCinema" }
+    ];
+
     // Dynamically generate year selections from 1950 up to the current year
     const currentYear = new Date().getFullYear();
     const yearsList = [];
@@ -44,13 +54,13 @@ function Movies() {
     // Reset page back to 1 whenever a filter combination updates
     useEffect(() => {
         setPage(1);
-    }, [selectedGenre, selectedYear, selectedRating, mediaType]);
+    }, [selectedGenre, selectedYear, selectedRating, selectedProvider, mediaType]);
 
     // Query backend when page variations or filter options shift
     useEffect(() => {
         fetchFilteredMovies();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [page, selectedGenre, selectedYear, selectedRating, mediaType]);
+    }, [page, selectedGenre, selectedYear, selectedRating, selectedProvider, mediaType]);
 
     const fetchFilteredMovies = async () => {
         setLoading(true);
@@ -60,6 +70,7 @@ function Movies() {
             if (selectedGenre) url += `&genre=${selectedGenre}`;
             if (selectedYear) url += `&year=${selectedYear}`;
             if (selectedRating) url += `&rating=${selectedRating}`;
+            if (selectedProvider) url += `&provider=${selectedProvider}`;
 
             const { data } = await api.get(url);
             setMovies(data.results || []);
@@ -80,10 +91,17 @@ function Movies() {
                     <h1>Discover <span>Tamil Entertainment</span></h1>
                 </div>
 
-                <div className="media-type-toggle">
+                <div className="media-type-toggle" style={{ marginBottom: '10px' }}>
                     <button className={mediaType === "all" ? "active" : ""} onClick={() => setMediaType("all")}>All</button>
                     <button className={mediaType === "movie" ? "active" : ""} onClick={() => setMediaType("movie")}>Movies</button>
                     <button className={mediaType === "tv" ? "active" : ""} onClick={() => setMediaType("tv")}>Series</button>
+                </div>
+
+                <div className="media-type-toggle" style={{ flexWrap: 'wrap' }}>
+                    <button className={selectedProvider === "" ? "active" : ""} onClick={() => setSelectedProvider("")}>Any Platform</button>
+                    {providersList.map(p => (
+                        <button key={p.id} className={selectedProvider === p.id.toString() ? "active" : ""} onClick={() => setSelectedProvider(p.id.toString())}>{p.name}</button>
+                    ))}
                 </div>
 
                 {/* FILTERS PANEL DROPDOWNS */}
