@@ -5,7 +5,7 @@ const api = axios.create({
     headers: {
         "Content-Type": "application/json"
     },
-    timeout: 10000
+    timeout: 60000 // 60 seconds to allow AI models enough time to process
 });
 
 // Intercept responses to catch JWT token format errors (422) or expiration (401)
