@@ -147,23 +147,23 @@ export const getBackdropURL = (path) => {
 };
 
 export const getYoutubeTrailer = (videos) => {
-
-    if (!videos?.results) {
-
+    if (!videos?.results || videos.results.length === 0) {
         return null;
-
     }
 
-    const trailer = videos.results.find(
+    const youtubeVideos = videos.results.filter((video) => video.site === "YouTube");
 
-        (video) =>
-
-            video.site === "YouTube" &&
-
-            video.type === "Trailer"
-
+    // 1. Try to find a Tamil Trailer
+    let bestMatch = youtubeVideos.find(
+        (video) => video.type === "Trailer" && video.iso_639_1 === "ta"
     );
 
-    return trailer || null;
+    // 2. Try to find a Tamil Teaser
+    if (!bestMatch) {
+        bestMatch = youtubeVideos.find(
+            (video) => video.type === "Teaser" && video.iso_639_1 === "ta"
+        );
+    }
 
+    return bestMatch || null;
 };
