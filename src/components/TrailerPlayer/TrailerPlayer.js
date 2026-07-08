@@ -1,68 +1,23 @@
-import { useState, useEffect } from "react";
 import "./TrailerPlayer.css";
 
 function TrailerPlayer({ videoKey }) {
-    const [streamUrl, setStreamUrl] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        if (!videoKey) return;
-
-        const fetchStream = async () => {
-            setLoading(true);
-            setError(null);
-            try {
-                // Fetch the raw video streams from Piped API (a YouTube proxy)
-                const res = await fetch(`https://pipedapi.kavin.rocks/streams/${videoKey}`);
-                if (!res.ok) throw new Error("Failed to fetch stream");
-                
-                const data = await res.json();
-                
-                // Find a good quality mp4 stream (usually 720p or 1080p)
-                const streams = data.videoStreams;
-                if (streams && streams.length > 0) {
-                    // Try to find 720p or 1080p mp4, fallback to first available
-                    const preferred = streams.find(s => s.mimeType === "video/mp4" && (s.quality === "1080p" || s.quality === "720p")) || streams[0];
-                    setStreamUrl(preferred.url);
-                } else {
-                    throw new Error("No video streams found");
-                }
-            } catch (err) {
-                console.error("Trailer fetch error:", err);
-                setError("Unable to bypass firewall. Stream unavailable.");
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchStream();
-    }, [videoKey]);
-
-    if (loading) {
-        return (
-            <div className="trailer-player-loading">
-                <div className="spinner"></div>
-                <p>Establishing secure tunnel...</p>
-            </div>
-        );
-    }
-
-    if (error || !streamUrl) {
+    if (!videoKey) {
         return (
             <div className="trailer-player-error">
-                <p>{error || "Video unavailable"}</p>
+                <p>Video unavailable</p>
             </div>
         );
     }
 
     return (
-        <video 
+        <iframe
             className="native-trailer-video"
-            controls 
-            autoPlay 
-            src={streamUrl}
-        />
+            src={`https://www.youtube.com/embed/${videoKey}?autoplay=1`}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+        ></iframe>
     );
 }
 
