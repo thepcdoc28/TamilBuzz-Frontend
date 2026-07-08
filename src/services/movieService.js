@@ -152,6 +152,9 @@ export const getYoutubeTrailer = (videos) => {
     }
 
     const youtubeVideos = videos.results.filter((video) => video.site === "YouTube");
+    if (youtubeVideos.length === 0) {
+        return null;
+    }
 
     // 1. Try to find a Tamil Trailer
     let bestMatch = youtubeVideos.find(
@@ -163,6 +166,21 @@ export const getYoutubeTrailer = (videos) => {
         bestMatch = youtubeVideos.find(
             (video) => video.type === "Teaser" && video.iso_639_1 === "ta"
         );
+    }
+
+    // 3. Try to find any Trailer (fallback for movies with only Telugu/Hindi/English trailers)
+    if (!bestMatch) {
+        bestMatch = youtubeVideos.find((video) => video.type === "Trailer");
+    }
+
+    // 4. Try to find any Teaser
+    if (!bestMatch) {
+        bestMatch = youtubeVideos.find((video) => video.type === "Teaser");
+    }
+    
+    // 5. Fallback to absolutely any YouTube video attached to the movie
+    if (!bestMatch) {
+        bestMatch = youtubeVideos[0];
     }
 
     return bestMatch || null;

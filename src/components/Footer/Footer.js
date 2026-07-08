@@ -36,8 +36,6 @@ function Footer() {
 
             <Link to="/movies">Movies</Link>
 
-            <Link to="/search">Search</Link>
-
           </div>
 
           <div>
