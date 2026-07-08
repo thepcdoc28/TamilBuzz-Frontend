@@ -159,6 +159,10 @@
         width: 335px;
         justify-content: space-between;
         gap: 0;
+        box-sizing: border-box;
+        /* Push Home right 16px to align with search icon, push Directors left 20px to align with profile center */
+        padding-left: 16px;
+        padding-right: 20px;
     }
     .navbar-right {
         width: 100%;
