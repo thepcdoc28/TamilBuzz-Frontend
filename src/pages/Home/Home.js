@@ -18,7 +18,7 @@ import { isAuthenticated } from "../../services/authServices";
 
 function Home() {
 
-    const [loading, setLoading] = useState(true);
+
     const [featuredMovie, setFeaturedMovie] = useState(null);
     const [trendingMovies, setTrendingMovies] = useState([]);
     const [popularMovies, setPopularMovies] = useState([]);
@@ -84,8 +84,6 @@ function Home() {
             }
         } catch (error) {
             console.error(error);
-        } finally {
-            setLoading(false);
         }
     };
 

@@ -5,7 +5,7 @@ import { FaHeart, FaRegHeart, FaBookmark, FaRegBookmark, FaPlay, FaTimes, FaShar
 
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
-import Loader from "../../components/Loader/Loader";
+
 import MovieSection from "../../components/MovieSection/MovieSection";
 import CastCard from "../../components/CastCard/CastCard";
 import GenreBadge from "../../components/GenreBadge/GenreBadge";
@@ -45,7 +45,7 @@ function MovieDetails() {
     const [providers, setProviders] = useState([]);
     const [trailer, setTrailer] = useState(null);
     const [similarMovies, setSimilarMovies] = useState([]);
-    const [loading, setLoading] = useState(true);
+
     const [showTrailerModal, setShowTrailerModal] = useState(false);
 
     // User Interaction States
@@ -80,7 +80,6 @@ function MovieDetails() {
     }, [movie]);
     
     async function loadMovie() {
-        setLoading(true);
         try {
             const mediaType = location.pathname.startsWith("/tv") ? "tv" : "movie";
 
@@ -128,8 +127,6 @@ function MovieDetails() {
             }
         } catch (error) {
             console.error("Failed to load movie data concurrently:", error);
-        } finally {
-            setLoading(false);
         }
     }
 
