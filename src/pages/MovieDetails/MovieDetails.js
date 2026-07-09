@@ -215,9 +215,7 @@ function MovieDetails() {
         }
     };
 
-    if (loading) {
-        return <Loader />;
-    }
+
 
     if (!movie) {
         return (

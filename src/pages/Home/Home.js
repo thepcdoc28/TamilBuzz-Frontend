@@ -89,13 +89,6 @@ function Home() {
         }
     };
 
-    if (loading) {
-        return (
-            <div className="loading-screen">
-                <h1>Loading TamilBuzz...</h1>
-            </div>
-        );
-    }
 
     return (
         <div className="home">

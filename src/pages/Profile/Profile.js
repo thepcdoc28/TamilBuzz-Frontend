@@ -66,15 +66,13 @@ function Profile() {
         }
     };
 
-    if (loading) {
-        return <Loader />;
-    }
-
     return (
         <>
             <Navbar />
             <div className="profile-page">
-                <div className="profile-container">
+                {loading ? <Loader /> : (
+                    <>
+                        <div className="profile-container">
                     
                     {!isEditing && (
                         <button onClick={() => setIsEditing(true)} className="edit-icon-btn top-right">
@@ -127,7 +125,9 @@ function Profile() {
                         </button>
                     </div>
 
-                </div>
+                        </div>
+                    </>
+                )}
             </div>
             <Footer />
         </>

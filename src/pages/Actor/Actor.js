@@ -77,17 +77,14 @@ function Actor() {
         }
     };
 
-    if (loading) {
-        return <Loader />;
-    }
-
     return (
         <>
             <Navbar />
             <div className="actor-container-main">
                 
-                {/* CONDITION 1: RENDER DIRECTORY LIST IF NO ID PRESENT */}
-                {!id ? (
+                {loading ? (
+                    <Loader />
+                ) : !id ? (
                     <>
                         <div className="actor-page-title">
                             <h1>Popular <span>Actors</span></h1>

@@ -20,7 +20,7 @@
 
     align-items:center;
 
-    margin-bottom:20px;
+    margin-bottom:10px;
 
 }
 
@@ -81,6 +81,12 @@
     padding-bottom:15px;
     scroll-behavior:smooth;
     width: 100%;
+}
+
+/* Ensure cards in horizontal rows don't collapse */
+.movie-row .movie-card {
+    width: 180px;
+    flex-shrink: 0;
 }
 
 /* ==========================
@@ -156,6 +162,9 @@
     .movie-row {
         gap: 10px;
         padding-bottom: 10px;
+    }
+    .movie-row .movie-card {
+        width: 140px;
     }
 }
 

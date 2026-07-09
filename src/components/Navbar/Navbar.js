@@ -62,14 +62,8 @@ function Navbar() {
           >
             Home
           </NavLink>
-
-          <NavLink to="/movies">
-            Movies
-          </NavLink>
-
-          <NavLink to="/actors">
-            Actors
-          </NavLink>
+          <NavLink to="/movies" className={({isActive}) => isActive ? "active" : ""}>Movies</NavLink>
+          <NavLink to="/actors" className={({isActive}) => isActive ? "active" : ""}>Actors</NavLink>
 
           <NavLink to="/directors">
             Directors

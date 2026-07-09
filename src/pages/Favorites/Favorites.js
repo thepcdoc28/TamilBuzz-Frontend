@@ -46,9 +46,7 @@ function Favorites() {
         }
     };
 
-    if (loading) {
-        return <Loader />;
-    }
+
 
     return (
         <>
@@ -58,21 +56,22 @@ function Favorites() {
                 <div className="favorites-header">
                     <h1>Your <span>Favorites</span></h1>
                 </div>
-
-                {favoriteMovies.length > 0 ? (
-                    <div className="favorites-grid">
-                        {favoriteMovies.map(movie => (
-                            <MovieCard key={movie.id} movie={movie} />
-                        ))}
-                    </div>
-                ) : (
-                    <div className="empty-favorites">
-                        <h2>No Favorites Yet</h2>
-                        <p>
-                            You haven't added any movies to your favorites. 
-                            Browse our collection and click the heart icon on a movie to add it here.
-                        </p>
-                    </div>
+                {loading ? <Loader /> : (
+                    favoriteMovies.length > 0 ? (
+                        <div className="favorites-grid">
+                            {favoriteMovies.map(movie => (
+                                <MovieCard key={movie.id} movie={movie} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="empty-favorites">
+                            <h2>No Favorites Yet</h2>
+                            <p>
+                                You haven't added any movies to your favorites. 
+                                Browse our collection and click the heart icon on a movie to add it here.
+                            </p>
+                        </div>
+                    )
                 )}
             </div>
             <Footer />

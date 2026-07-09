@@ -200,13 +200,10 @@
         padding: 15px 0;
     }
     .nav-links {
-        /* Align exact width of search-bar (280px) */
-        width: 280px;
-        justify-content: space-between;
-        gap: 0;
+        width: 100%;
+        justify-content: center;
+        gap: 30px;
         box-sizing: border-box;
-        padding-left: 5px;
-        padding-right: 5px;
     }
     .logo {
         width: 100%;
@@ -229,6 +226,8 @@
     .nav-links {
         width: 100%;
         padding: 0 10px;
+        justify-content: center;
+        gap: 25px;
     }
     .navbar-right {
         gap: 10px;

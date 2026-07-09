@@ -32,7 +32,7 @@
 .image-wrapper {
     position: relative;
     width: 100%;
-    padding-top: 150%; /* 2:3 ratio -> height is 1.5x width */
+    padding-top: 130%; /* Shorter ratio (approx 3:4 or 4:5) instead of 2:3 */
     background: #222;
 }
 

@@ -80,9 +80,7 @@ function Director() {
         }
     };
 
-    if (loading) {
-        return <Loader />;
-    }
+
 
     // Condition A: Directory View
     if (!id) {
@@ -90,10 +88,12 @@ function Director() {
             <>
                 <Navbar />
                 <div className="director-container-main">
-                    <div className="director-page-title">
-                        <h1>Popular <span>Directors</span></h1>
-                    </div>
-                    <div className="actor-directory-grid">
+                    {loading ? <Loader /> : (
+                        <>
+                            <div className="director-page-title">
+                                <h1>Popular <span>Directors</span></h1>
+                            </div>
+                            <div className="actor-directory-grid">
                         {directorsList.map(person => (
                             <CastCard key={person.id} actor={person} />
                         ))}
@@ -105,14 +105,27 @@ function Director() {
                         >
                             Previous
                         </button>
-                        <span>Page {directoryPage} of {totalPages}</span>
-                        <button 
-                            disabled={directoryPage >= totalPages}
-                            onClick={() => setDirectoryPage(directoryPage + 1)}
-                        >
-                            Next
-                        </button>
-                    </div>
+                                {directorsList.map(person => (
+                                    <CastCard key={person.id} actor={person} />
+                                ))}
+                            </div>
+                            <div className="actor-directory-pagination">
+                                <button 
+                                    disabled={directoryPage === 1} 
+                                    onClick={() => setDirectoryPage(directoryPage - 1)}
+                                >
+                                    Previous
+                                </button>
+                                <span>Page {directoryPage} of {totalPages}</span>
+                                <button 
+                                    disabled={directoryPage >= totalPages}
+                                    onClick={() => setDirectoryPage(directoryPage + 1)}
+                                >
+                                    Next
+                                </button>
+                            </div>
+                        </>
+                    )}
                 </div>
                 <Footer />
             </>
@@ -120,7 +133,7 @@ function Director() {
     }
 
     // Condition B: Not Found View
-    if (id && !directorDetails) {
+    if (id && !directorDetails && !loading) {
         return (
             <>
                 <Navbar />
@@ -137,7 +150,8 @@ function Director() {
         <>
             <Navbar />
             <div className="director-container-main">
-                <div className="director-profile-layout">
+                {loading ? <Loader /> : (
+                    <div className="director-profile-layout">
                     
                     {/* Left Side Column */}
                     <div className="director-profile-sidebar">
@@ -196,7 +210,8 @@ function Director() {
                         </div>
                     </div>
 
-                </div>
+                    </div>
+                )}
             </div>
             <Footer />
         </>

@@ -5,12 +5,16 @@ import Footer from "../../components/Footer/Footer";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import Loader from "../../components/Loader/Loader";
 import api from "../../services/api";
+import { FaFilter } from "react-icons/fa";
 
 function Movies() {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
+    
+    // UI State
+    const [showFilters, setShowFilters] = useState(false);
 
     // Filter States
     const [selectedGenre, setSelectedGenre] = useState("");
@@ -87,65 +91,74 @@ function Movies() {
         <>
             <Navbar />
             <div className="movies-page">
-                <div className="movies-header">
-                    <h1>Discover <span>Tamil Entertainment</span></h1>
+                <div className="movies-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '15px' }}>
+                    <h1>Discover <span>Movies</span></h1>
+                    <button 
+                        onClick={() => setShowFilters(!showFilters)}
+                        className={`filter-toggle-btn ${showFilters ? 'active' : ''}`}
+                    >
+                        <FaFilter /> {showFilters ? 'Hide Filters' : 'Filters'}
+                    </button>
                 </div>
 
-                <div className="media-type-toggle" style={{ marginBottom: '10px' }}>
-                    <button className={mediaType === "all" ? "active" : ""} onClick={() => setMediaType("all")}>All</button>
-                    <button className={mediaType === "movie" ? "active" : ""} onClick={() => setMediaType("movie")}>Movies</button>
-                    <button className={mediaType === "tv" ? "active" : ""} onClick={() => setMediaType("tv")}>Series</button>
-                </div>
-
-                <div className="media-type-toggle" style={{ flexWrap: 'wrap' }}>
-                    <button className={selectedProvider === "" ? "active" : ""} onClick={() => setSelectedProvider("")}>Any Platform</button>
-                    {providersList.map(p => (
-                        <button key={p.id} className={selectedProvider === p.id.toString() ? "active" : ""} onClick={() => setSelectedProvider(p.id.toString())}>{p.name}</button>
-                    ))}
-                </div>
-
-                {/* FILTERS PANEL DROPDOWNS */}
-                <div className="filters-container">
-                    {/* Genre Picker */}
-                    <div className="filter-group">
-                        <label>Genre</label>
-                        <select 
-                            value={selectedGenre} 
-                            onChange={(e) => setSelectedGenre(e.target.value)}
-                        >
-                            <option value="">All Genres</option>
-                            {genresList.map(g => (
-                                <option key={g.id} value={g.id}>{g.name}</option>
-                            ))}
-                        </select>
+                {/* SLIDE DOWN FILTER MENU */}
+                <div className={`filter-menu-drawer ${showFilters ? 'open' : ''}`}>
+                    <div className="media-type-toggle" style={{ marginBottom: '10px' }}>
+                        <button className={mediaType === "all" ? "active" : ""} onClick={() => setMediaType("all")}>All</button>
+                        <button className={mediaType === "movie" ? "active" : ""} onClick={() => setMediaType("movie")}>Movies</button>
+                        <button className={mediaType === "tv" ? "active" : ""} onClick={() => setMediaType("tv")}>Series</button>
                     </div>
 
-                    {/* Year Picker */}
-                    <div className="filter-group">
-                        <label>Release Year</label>
-                        <select 
-                            value={selectedYear} 
-                            onChange={(e) => setSelectedYear(e.target.value)}
-                        >
-                            <option value="">All Years</option>
-                            {yearsList.map(y => (
-                                <option key={y} value={y}>{y}</option>
-                            ))}
-                        </select>
+                    <div className="media-type-toggle" style={{ flexWrap: 'wrap' }}>
+                        <button className={selectedProvider === "" ? "active" : ""} onClick={() => setSelectedProvider("")}>Any Platform</button>
+                        {providersList.map(p => (
+                            <button key={p.id} className={selectedProvider === p.id.toString() ? "active" : ""} onClick={() => setSelectedProvider(p.id.toString())}>{p.name}</button>
+                        ))}
                     </div>
 
-                    {/* Rating Picker */}
-                    <div className="filter-group">
-                        <label>Minimum Rating</label>
-                        <select 
-                            value={selectedRating} 
-                            onChange={(e) => setSelectedRating(e.target.value)}
-                        >
-                            <option value="">Any Rating</option>
-                            {[9, 8, 7, 6, 5, 4, 3, 2, 1].map(num => (
-                                <option key={num} value={num}>★ {num}+/10</option>
-                            ))}
-                        </select>
+                    {/* FILTERS PANEL DROPDOWNS */}
+                    <div className="filters-container">
+                        {/* Genre Picker */}
+                        <div className="filter-group">
+                            <label>Genre</label>
+                            <select 
+                                value={selectedGenre} 
+                                onChange={(e) => setSelectedGenre(e.target.value)}
+                            >
+                                <option value="">All Genres</option>
+                                {genresList.map(g => (
+                                    <option key={g.id} value={g.id}>{g.name}</option>
+                                ))}
+                            </select>
+                        </div>
+
+                        {/* Year Picker */}
+                        <div className="filter-group">
+                            <label>Release Year</label>
+                            <select 
+                                value={selectedYear} 
+                                onChange={(e) => setSelectedYear(e.target.value)}
+                            >
+                                <option value="">All Years</option>
+                                {yearsList.map(y => (
+                                    <option key={y} value={y}>{y}</option>
+                                ))}
+                            </select>
+                        </div>
+
+                        {/* Rating Picker */}
+                        <div className="filter-group">
+                            <label>Minimum Rating</label>
+                            <select 
+                                value={selectedRating} 
+                                onChange={(e) => setSelectedRating(e.target.value)}
+                            >
+                                <option value="">Any Rating</option>
+                                {[9, 8, 7, 6, 5, 4, 3, 2, 1].map(num => (
+                                    <option key={num} value={num}>★ {num}+/10</option>
+                                ))}
+                            </select>
+                        </div>
                     </div>
                 </div>
 

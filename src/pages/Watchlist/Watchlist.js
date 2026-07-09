@@ -46,9 +46,7 @@ function Watchlist() {
         }
     };
 
-    if (loading) {
-        return <Loader />;
-    }
+
 
     return (
         <>
@@ -58,21 +56,22 @@ function Watchlist() {
                 <div className="watchlist-header">
                     <h1>Your <span>Watchlist</span></h1>
                 </div>
-
-                {watchlistMovies.length > 0 ? (
-                    <div className="watchlist-grid">
-                        {watchlistMovies.map(movie => (
-                            <MovieCard key={movie.id} movie={movie} />
-                        ))}
-                    </div>
-                ) : (
-                    <div className="empty-watchlist">
-                        <h2>Your Watchlist is Empty</h2>
-                        <p>
-                            Keep track of movies you want to watch later. 
-                            Click the bookmark icon on any movie to add it to this list.
-                        </p>
-                    </div>
+                {loading ? <Loader /> : (
+                    watchlistMovies.length > 0 ? (
+                        <div className="watchlist-grid">
+                            {watchlistMovies.map(movie => (
+                                <MovieCard key={movie.id} movie={movie} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="empty-watchlist">
+                            <h2>Your Watchlist is Empty</h2>
+                            <p>
+                                Keep track of movies you want to watch later. 
+                                Click the bookmark icon on any movie to add it to this list.
+                            </p>
+                        </div>
+                    )
                 )}
             </div>
             <Footer />

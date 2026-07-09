@@ -4,7 +4,7 @@
 .actor-container-main {
     width: 90%;
     margin: auto;
-    padding: 40px 0;
+    padding: 10px 0 40px;
     min-height: calc(100vh - 75px);
     color: white;
 }
@@ -12,7 +12,7 @@
 .actor-page-title h1 {
     font-size: 42px;
     font-weight: 700;
-    margin-bottom: 35px;
+    margin-bottom: 10px;
 }
 
 .actor-page-title span {
@@ -158,11 +158,11 @@
         font-size: 32px;
     }
     .actor-directory-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 15px;
     }
     .actor-filmography-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 15px;
     }
     .actor-directory-grid .cast-card,

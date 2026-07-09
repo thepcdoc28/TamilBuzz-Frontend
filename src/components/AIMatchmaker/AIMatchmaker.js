@@ -41,6 +41,16 @@ function AIMatchmaker() {
         }
     };
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            // Don't submit if empty or loading
+            if (prompt.trim() && !isLoading) {
+                handleSubmit(e);
+            }
+        }
+    };
+
     return (
         <>
             {/* Floating Action Button */}
@@ -71,6 +81,7 @@ function AIMatchmaker() {
                                     placeholder="e.g., 'I want a fast-paced thriller like Ratsasan but without romance'"
                                     value={prompt}
                                     onChange={(e) => setPrompt(e.target.value)}
+                                    onKeyDown={handleKeyDown}
                                     autoFocus
                                 />
                             </div>
