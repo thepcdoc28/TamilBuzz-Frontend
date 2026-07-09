@@ -2,78 +2,67 @@
    CARD
 ========================== */
 
-.cast-link{
-
-    text-decoration:none;
-
-    color:white;
-
+.cast-link {
+    text-decoration: none;
+    color: white;
+    display: block;
+    height: 100%; /* Important to stretch within grid cell */
 }
 
-.cast-card{
-
-    width:170px;
-
-    background:#181818;
-
-    border-radius:12px;
-
-    overflow:hidden;
-
-    transition:.3s;
-
-    cursor:pointer;
-
+.cast-card {
+    width: 100%; /* Fully responsive */
+    height: 100%; /* Stretch to fill grid */
+    background: #181818;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: .3s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
 }
 
-.cast-card:hover{
-
-    transform:translateY(-6px);
-
+.cast-card:hover {
+    transform: translateY(-6px);
 }
 
 /* ==========================
    IMAGE
 ========================== */
 
-.cast-card img{
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 150%; /* 2:3 ratio -> height is 1.5x width */
+    background: #222;
+}
 
-    width:100%;
-
-    height:240px;
-
-    object-fit:cover;
-
+.image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* ==========================
    INFO
 ========================== */
 
-.cast-info{
-
-    padding:15px;
-
+.cast-info {
+    padding: 15px;
+    flex-grow: 1; /* Ensures text area fills the bottom evenly */
 }
 
-.cast-info h3{
-
-    font-size:16px;
-
-    margin-bottom:8px;
-
-    white-space:nowrap;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-
+.cast-info h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.cast-info p{
-
-    color:#a0a0a0;
-
-    font-size:14px;
-
+.cast-info p {
+    color: #a0a0a0;
+    font-size: 14px;
 }

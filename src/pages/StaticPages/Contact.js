@@ -1,6 +1,7 @@
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import "./StaticPage.css";
+import ExitToMenuButton from "../../components/ExitToMenuButton/ExitToMenuButton";
 
 function Contact() {
     const handleSubmit = (e) => {
@@ -13,6 +14,7 @@ function Contact() {
         <>
             <Navbar />
             <div className="static-page">
+                <ExitToMenuButton />
                 <h1>Contact Us</h1>
                 <p>
                     Have a question, feedback, or a business inquiry? We'd love to hear from you. Fill out the form below and we'll get in touch as soon as possible.

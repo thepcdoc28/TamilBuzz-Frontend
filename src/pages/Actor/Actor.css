@@ -2,7 +2,7 @@
    SHARED ENTRIES & CONTAINERS
 ========================================== */
 .actor-container-main {
-    width: 95%;
+    width: 90%;
     margin: auto;
     padding: 40px 0;
     min-height: calc(100vh - 75px);
@@ -156,14 +156,17 @@
 @media (max-width: 480px) {
     .actor-page-title h1 {
         font-size: 32px;
-        text-align: center;
     }
     .actor-directory-grid {
-        grid-template-columns: 1fr;
-        justify-items: center;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
     .actor-filmography-grid {
-        grid-template-columns: 1fr;
-        justify-items: center;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    .actor-directory-grid .cast-card,
+    .actor-filmography-grid .movie-card {
+        width: 100%;
     }
 }

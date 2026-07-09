@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import MovieCard from "../../components/MovieCard/MovieCard";
+import ExitToMenuButton from "../../components/ExitToMenuButton/ExitToMenuButton";
 import Loader from "../../components/Loader/Loader";
 import { getWatchlist } from "../../services/watchlistServices";
 import { getMovieDetails } from "../../services/movieService";
@@ -53,6 +54,7 @@ function Watchlist() {
         <>
             <Navbar />
             <div className="watchlist-page">
+                <ExitToMenuButton />
                 <div className="watchlist-header">
                     <h1>Your <span>Watchlist</span></h1>
                 </div>

@@ -1,12 +1,14 @@
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import "./StaticPage.css";
+import ExitToMenuButton from "../../components/ExitToMenuButton/ExitToMenuButton";
 
 function Terms() {
     return (
         <>
             <Navbar />
             <div className="static-page">
+                <ExitToMenuButton />
                 <h1>Terms of Service</h1>
                 <p>Last updated: July 2026</p>
 

@@ -60,10 +60,12 @@ function CastCard({ actor }) {
             className="cast-link"
         >
             <div className="cast-card">
-                <img
-                    src={image || `https://ui-avatars.com/api/?name=${encodeURIComponent(actor.name)}&background=222&color=fff&size=500&font-size=0.33`}
-                    alt={actor.name}
-                />
+                <div className="image-wrapper">
+                    <img
+                        src={image || `https://ui-avatars.com/api/?name=${encodeURIComponent(actor.name)}&background=222&color=fff&size=500&font-size=0.33`}
+                        alt={actor.name}
+                    />
+                </div>
                 <div className="cast-info">
                     <h3>{actor.name}</h3>
                 </div>

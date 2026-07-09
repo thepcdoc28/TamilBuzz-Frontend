@@ -1,0 +1,27 @@
+.exit-menu-btn {
+  background: #F5C518;
+  color: #111;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.exit-menu-btn:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+  .exit-menu-btn {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    gap: 6px;
+  }
+}

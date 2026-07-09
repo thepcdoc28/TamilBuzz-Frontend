@@ -1,12 +1,14 @@
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import "./StaticPage.css";
+import ExitToMenuButton from "../../components/ExitToMenuButton/ExitToMenuButton";
 
 function Privacy() {
     return (
         <>
             <Navbar />
             <div className="static-page">
+                <ExitToMenuButton />
                 <h1>Privacy Policy</h1>
                 <p>Last updated: July 2026</p>
                 

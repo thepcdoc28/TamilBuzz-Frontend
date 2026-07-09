@@ -12,6 +12,9 @@ import Profile from "../pages/Profile/Profile";
 import Privacy from "../pages/StaticPages/Privacy";
 import Terms from "../pages/StaticPages/Terms";
 import Contact from "../pages/StaticPages/Contact";
+import About from "../pages/StaticPages/About";
+import FAQ from "../pages/StaticPages/FAQ";
+import Settings from "../pages/Settings/Settings";
 
 function AppRoutes() {
   return (
@@ -38,6 +41,11 @@ function AppRoutes() {
       <Route path="/privacy" element={<Privacy />} />
       <Route path="/terms" element={<Terms />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/faq" element={<FAQ />} />
+      
+      {/* Settings */}
+      <Route path="/settings" element={<Settings />} />
     </Routes>
   );
 }

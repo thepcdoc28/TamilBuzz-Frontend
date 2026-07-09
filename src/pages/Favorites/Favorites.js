@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import MovieCard from "../../components/MovieCard/MovieCard";
+import ExitToMenuButton from "../../components/ExitToMenuButton/ExitToMenuButton";
 import Loader from "../../components/Loader/Loader";
 import { getFavorites } from "../../services/watchlistServices";
 import { getMovieDetails } from "../../services/movieService";
@@ -53,6 +54,7 @@ function Favorites() {
         <>
             <Navbar />
             <div className="favorites-page">
+                <ExitToMenuButton />
                 <div className="favorites-header">
                     <h1>Your <span>Favorites</span></h1>
                 </div>

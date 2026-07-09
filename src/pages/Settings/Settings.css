@@ -1,0 +1,207 @@
+.settings-page {
+    background-color: #0f0f0f;
+    min-height: 100vh;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.settings-header {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    padding-top: 20px;
+}
+
+.settings-header .exit-menu-btn {
+    margin-bottom: 0 !important; /* Reset margin from the button's default css */
+    padding: 8px 16px;
+}
+
+.settings-header h1 {
+    color: #F5C518;
+    margin: 0;
+    font-size: 2rem;
+}
+
+.settings-content {
+    width: 100%;
+    max-width: 600px;
+}
+
+.settings-section {
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    border: 1px solid #2a2a2a;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.settings-section h2 {
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 20px;
+    margin-top: 0;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #2a2a2a;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    user-select: none;
+}
+
+.setting-item:hover {
+    opacity: 0.8;
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.setting-item:first-of-type {
+    padding-top: 0;
+}
+
+.setting-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.setting-icon {
+    font-size: 1.5rem;
+    color: #F5C518;
+    width: 25px; /* Fixed width to align text perfectly */
+    text-align: center;
+}
+
+.setting-info h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.setting-info p {
+    margin: 4px 0 0;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.text-danger h3, .text-danger .setting-icon {
+    color: #ff4d4d;
+}
+
+/* Custom Toggle Switch */
+.toggle-switch {
+    width: 50px;
+    height: 28px;
+    background-color: #444;
+    border-radius: 30px;
+    position: relative;
+    transition: background-color 0.3s;
+    flex-shrink: 0;
+}
+
+.toggle-switch.active {
+    background-color: #F5C518;
+}
+
+.toggle-knob {
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.toggle-switch.active .toggle-knob {
+    transform: translateX(22px);
+}
+
+/* Light mode support just for settings page demo */
+body.light-mode .settings-page {
+    background-color: #f5f5f5;
+    color: #111;
+}
+
+body.light-mode .settings-section {
+    background: #fff;
+    border-color: #ddd;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+body.light-mode .setting-item {
+    border-color: #eee;
+}
+
+body.light-mode .setting-info p {
+    color: #666;
+}
+
+body.light-mode .settings-section h2 {
+    color: #aaa;
+}
+
+body.light-mode .toggle-switch {
+    background-color: #ccc;
+}
+
+@media (max-width: 600px) {
+    .settings-page {
+        padding: 15px 10px;
+    }
+
+    .settings-header {
+        margin-bottom: 20px;
+        gap: 12px;
+    }
+
+    .settings-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .settings-section {
+        padding: 15px;
+    }
+
+    .setting-info {
+        gap: 10px;
+    }
+
+    .setting-icon {
+        font-size: 1.25rem;
+        width: 20px;
+    }
+
+    .setting-info h3 {
+        font-size: 0.95rem;
+    }
+
+    .setting-info p {
+        font-size: 0.75rem;
+    }
+    
+    .setting-item {
+        padding: 12px 0;
+        gap: 10px;
+    }
+}

@@ -1,0 +1,23 @@
+.static-page-container {
+    padding: 40px;
+    color: #fff;
+    min-height: 70vh;
+}
+
+.static-page-container h1 {
+    color: #F5C518;
+    margin-bottom: 20px;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+}
+
+.faq-item h3 {
+    color: #ddd;
+    margin-bottom: 5px;
+}
+
+.faq-item p {
+    color: #aaa;
+}

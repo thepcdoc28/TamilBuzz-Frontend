@@ -40,6 +40,28 @@
 
 }
 
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.menu-icon {
+    background: none;
+    border: none;
+    color: #F5C518;
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+.menu-icon:hover {
+    color: #fff;
+}
+
 /* ==========================
    LOGO
 ========================== */
@@ -51,13 +73,11 @@
 }
 
 .logo h1{
-
     color:white;
-
     font-size:30px;
-
     font-weight:700;
-
+    margin: 0;
+    text-align: center;
 }
 
 .logo span{
@@ -141,6 +161,10 @@
     transform: translateY(-2px);
 }
 
+.mobile-profile {
+    display: none;
+}
+
 /* ==========================
    MOBILE RESPONSIVENESS
 ========================== */
@@ -150,19 +174,44 @@
         justify-content: center;
         gap: 15px;
     }
+    .navbar-left {
+        width: 100%;
+        position: relative;
+        justify-content: center;
+    }
+    .menu-icon {
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .mobile-profile {
+        display: flex;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .desktop-profile {
+        display: none;
+    }
     .navbar {
         height: auto;
         padding: 15px 0;
     }
     .nav-links {
-        /* Align exact width of (search-bar 280) + (gap 15) + (profile 40) = 335px */
-        width: 335px;
+        /* Align exact width of search-bar (280px) */
+        width: 280px;
         justify-content: space-between;
         gap: 0;
         box-sizing: border-box;
-        /* Push Home right 16px to align with search icon, push Directors left 20px to align with profile center */
-        padding-left: 16px;
-        padding-right: 20px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .logo {
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
     .navbar-right {
         width: 100%;
@@ -178,8 +227,8 @@
 }
 @media (max-width: 480px) {
     .nav-links {
-        /* Align exact width of (search-bar 280) + (gap 10) + (profile 40) = 330px */
-        width: 330px;
+        width: 100%;
+        padding: 0 10px;
     }
     .navbar-right {
         gap: 10px;
