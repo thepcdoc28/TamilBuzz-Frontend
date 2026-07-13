@@ -11,7 +11,12 @@ import {
     getTrendingMovies,
     getTopRatedMovies,
     getPopularMovies,
-    getUpcomingMovies
+    getUpcomingMovies,
+    getTrendingSeries,
+    getTopRatedSeries,
+    getPopularSeries,
+    getActionMovies,
+    getComedyMovies
 } from "../../services/movieService";
 import { getViewingHistory } from "../../services/historyServices";
 import { isAuthenticated } from "../../services/authServices";
@@ -19,6 +24,7 @@ import { isAuthenticated } from "../../services/authServices";
 function Home() {
 
 
+    const [isLoading, setIsLoading] = useState(true);
     const [featuredMovie, setFeaturedMovie] = useState(null);
     const [trendingMovies, setTrendingMovies] = useState([]);
     const [popularMovies, setPopularMovies] = useState([]);
@@ -26,17 +32,29 @@ function Home() {
     const [upcomingMovies, setUpcomingMovies] = useState([]);
     const [historyMovies, setHistoryMovies] = useState([]);
 
+    const [trendingSeries, setTrendingSeries] = useState([]);
+    const [popularSeries, setPopularSeries] = useState([]);
+    const [topRatedSeries, setTopRatedSeries] = useState([]);
+    const [actionMovies, setActionMovies] = useState([]);
+    const [comedyMovies, setComedyMovies] = useState([]);
+
     useEffect(() => {
         loadHome();
     }, []);
 
     const loadHome = async () => {
+        setIsLoading(true);
         try {
             const promises = [
                 getTrendingMovies(),
                 getPopularMovies(),
                 getTopRatedMovies(),
-                getUpcomingMovies()
+                getUpcomingMovies(),
+                getTrendingSeries(),
+                getPopularSeries(),
+                getTopRatedSeries(),
+                getActionMovies(),
+                getComedyMovies()
             ];
             
             if (isAuthenticated()) {
@@ -46,13 +64,18 @@ function Home() {
                 }));
             }
 
-            const [
-                trending,
-                popular,
-                topRated,
-                upcoming,
-                history
-            ] = await Promise.all(promises);
+            const results = await Promise.all(promises);
+            
+            const trending = results[0];
+            const popular = results[1];
+            const topRated = results[2];
+            const upcoming = results[3];
+            const trendingSer = results[4];
+            const popularSer = results[5];
+            const topRatedSer = results[6];
+            const actionMov = results[7];
+            const comedyMov = results[8];
+            const history = results[9];
 
             // Deduplicate movies across rows to maximize UI variety
             const seenIds = new Set();
@@ -69,11 +92,17 @@ function Home() {
             const uniquePopular = filterUnique(popular);
             const uniqueTopRated = filterUnique(topRated);
             const uniqueUpcoming = filterUnique(upcoming);
-
+            
             setTrendingMovies(uniqueTrending);
             setPopularMovies(uniquePopular);
             setTopRatedMovies(uniqueTopRated);
             setUpcomingMovies(uniqueUpcoming);
+            
+            setTrendingSeries(trendingSer);
+            setPopularSeries(popularSer);
+            setTopRatedSeries(topRatedSer);
+            setActionMovies(actionMov);
+            setComedyMovies(comedyMov);
             
             if (history) {
                 setHistoryMovies(history);
@@ -84,9 +113,23 @@ function Home() {
             }
         } catch (error) {
             console.error(error);
+        } finally {
+            setIsLoading(false);
         }
     };
 
+
+    if (isLoading) {
+        return (
+            <div className="home">
+                <Navbar />
+                <div className="loading-screen">
+                    <h1>Loading Movies...</h1>
+                </div>
+                <Footer />
+            </div>
+        );
+    }
 
     return (
         <div className="home">
@@ -115,6 +158,41 @@ function Home() {
                     title="🆕 Upcoming Movies"
                     movies={upcomingMovies}
                 />
+                
+                {trendingSeries.length > 0 && (
+                    <MovieSection
+                        title="📺 Trending TV Series"
+                        movies={trendingSeries}
+                    />
+                )}
+                
+                {popularSeries.length > 0 && (
+                    <MovieSection
+                        title="🌟 Popular TV Series"
+                        movies={popularSeries}
+                    />
+                )}
+                
+                {topRatedSeries.length > 0 && (
+                    <MovieSection
+                        title="🏆 Top Rated TV Series"
+                        movies={topRatedSeries}
+                    />
+                )}
+                
+                {actionMovies.length > 0 && (
+                    <MovieSection
+                        title="💥 Action Packed"
+                        movies={actionMovies}
+                    />
+                )}
+                
+                {comedyMovies.length > 0 && (
+                    <MovieSection
+                        title="😂 Laugh Riot (Comedy)"
+                        movies={comedyMovies}
+                    />
+                )}
             </main>
             <Footer />
         </div>

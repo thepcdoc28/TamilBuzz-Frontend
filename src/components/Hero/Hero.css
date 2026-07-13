@@ -101,7 +101,7 @@
 /* ==========================
    MOBILE RESPONSIVENESS
 ========================== */
-@media (max-width: 768px) {
+@media (max-width: 912px) {
     .hero {
         height: 500px;
     }

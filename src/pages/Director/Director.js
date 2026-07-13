@@ -94,17 +94,6 @@ function Director() {
                                 <h1>Popular <span>Directors</span></h1>
                             </div>
                             <div className="actor-directory-grid">
-                        {directorsList.map(person => (
-                            <CastCard key={person.id} actor={person} />
-                        ))}
-                    </div>
-                    <div className="actor-directory-pagination">
-                        <button 
-                            disabled={directoryPage === 1} 
-                            onClick={() => setDirectoryPage(directoryPage - 1)}
-                        >
-                            Previous
-                        </button>
                                 {directorsList.map(person => (
                                     <CastCard key={person.id} actor={person} />
                                 ))}

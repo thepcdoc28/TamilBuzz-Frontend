@@ -232,4 +232,22 @@
         padding: 8px 20px;
         font-size: 14px;
     }
+
+    .movies-page {
+        width: 100%;
+        padding: 10px 20px 40px; /* matched 20px margin */
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+
+    .movies-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px; /* matched 20px gap */
+        width: 100%;
+        justify-items: stretch;
+    }
+
+    .movies-grid > * {
+        min-width: 0; /* Forces poster to shrink and respect the gap */
+    }
 }

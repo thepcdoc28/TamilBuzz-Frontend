@@ -1,25 +1,16 @@
 .home{
-
     min-height:100vh;
-
     background:#0f0f0f;
-
 }
 
 .home-content{
-
     width:95%;
-
     margin:auto;
-
     padding: 0 0 80px;
-
 }
 
 .loading-screen{
-
-    height:100vh;
-
+    height: calc(100vh - 75px);
     display:flex;
 
     justify-content:center;
@@ -33,9 +24,12 @@
 }
 
 .loading-screen h1{
-
     font-size:32px;
-
     font-weight:600;
-
+    position: absolute;
+    top: 50vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
 }

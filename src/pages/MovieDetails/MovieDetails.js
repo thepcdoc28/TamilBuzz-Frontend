@@ -344,10 +344,12 @@ function MovieDetails() {
 
             <ReviewSection movieId={id} />
 
-            <MovieSection
-                title="Similar Movies"
-                movies={similarMovies}
-            />
+            <div className="similar-section">
+                <MovieSection
+                    title="Similar Movies"
+                    movies={similarMovies}
+                />
+            </div>
 
             <Footer />
         </>

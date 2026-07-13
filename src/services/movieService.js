@@ -29,6 +29,31 @@ export const getNowPlayingMovies = async () => {
     return data;
 };
 
+export const getTrendingSeries = async () => {
+    const { data } = await api.get("/trending-series");
+    return data;
+};
+
+export const getTopRatedSeries = async () => {
+    const { data } = await api.get("/top-rated-series");
+    return data;
+};
+
+export const getPopularSeries = async () => {
+    const { data } = await api.get("/popular-series");
+    return data;
+};
+
+export const getActionMovies = async () => {
+    const { data } = await api.get("/action");
+    return data;
+};
+
+export const getComedyMovies = async () => {
+    const { data } = await api.get("/comedy");
+    return data;
+};
+
 /* ==========================
    DETAILS
 ========================== */

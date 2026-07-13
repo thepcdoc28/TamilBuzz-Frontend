@@ -19,7 +19,6 @@ function MovieSection({ title, movies = [] }) {
         <section className="movie-section">
             <div className="section-header">
                 <h2>{title}</h2>
-                <button className="view-all">View All</button>
             </div>
             
             <div className="slider-container">

@@ -3,11 +3,10 @@
 ========================== */
 
 .movie-link {
-
     text-decoration: none;
-
     color: white;
-
+    display: block;
+    width: 100%;
 }
 
 /* ==========================
